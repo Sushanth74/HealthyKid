@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Healthy",
+    "slug": "health",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/healthykid.jpeg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/healthykid.jpeg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "scheme": "HealthyKid",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/healthykid.jpeg",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.jsm.sora"
+    },
+    "web": {
+      "icon": "./assets/images/healthykid.jpeg"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ac2c2abb-f0e4-449e-9d32-2d7fae0a5d98"
+      }
+    }
+  }
+}
