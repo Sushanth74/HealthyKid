@@ -1,20 +1,24 @@
-import { createConnection } from 'mysql';
+const mysql = require('mysql');
+const dotenv = require('dotenv');
 
-// Update with InfinityFree MySQL details
-const connection = createConnection({
-  host: 'sql112.infinityfree.com', // ✅ Replace with your actual InfinityFree MySQL hostname
-  user: 'if0_38244027',        // ✅ Replace with your actual InfinityFree MySQL username
-  password: 'leTn6aWTeQDtp',    // ✅ Replace with your actual InfinityFree MySQL password
-  database: 'if0_38244027_healthdatabase',        // ✅ Replace with your actual InfinityFree MySQL database name
-  port: 3306                       // ✅ Default MySQL port
+dotenv.config();
+
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
 
-connection.connect((err) => {
+pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Error connecting to MySQL:', err);
+    console.error('❌ Database connection failed:', err);
     return;
   }
-  console.log('Connected to MySQL');
+  console.log('✅ Connected to MySQL');
+  connection.release(); // Release the connection back to the pool
 });
 
-export default connection;
+module.exports = pool;

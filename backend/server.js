@@ -1,10 +1,12 @@
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const db = require('./db'); // Import MySQL connection
 const authRoutes = require('./routes/auth');
+
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 
@@ -14,8 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use('/routes/auth', authRoutes);
+app.use('/auth', authRoutes); // Routes for authentication
 
 // Server
 const PORT = process.env.PORT || 5002;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
