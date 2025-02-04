@@ -1,8 +1,8 @@
-const mysql = require('mysql');
+import { createConnection } from 'mysql';
 
 // Update with InfinityFree MySQL details
-const connection = mysql.createConnection({
-  host: 'myhealthdatabase.infinityfreeapp.com', // ✅ Replace with your actual InfinityFree MySQL hostname
+const connection = createConnection({
+  host: 'sql112.infinityfree.com', // ✅ Replace with your actual InfinityFree MySQL hostname
   user: 'if0_38244027',        // ✅ Replace with your actual InfinityFree MySQL username
   password: 'leTn6aWTeQDtp',    // ✅ Replace with your actual InfinityFree MySQL password
   database: 'if0_38244027_healthdatabase',        // ✅ Replace with your actual InfinityFree MySQL database name
@@ -17,4 +17,4 @@ connection.connect((err) => {
   console.log('Connected to MySQL');
 });
 
-module.exports = connection;
+export default connection;
