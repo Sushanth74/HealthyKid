@@ -1,17 +1,20 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // Replace with your MySQL username
-  password: '', // Replace with your MySQL password
-  database: 'HealthyApp',
-  port:3306,
+// Update with InfinityFree MySQL details
+const connection = mysql.createConnection({
+  host: 'myhealthdatabase.infinityfreeapp.com', // ✅ Replace with your actual InfinityFree MySQL hostname
+  user: 'if0_38244027',        // ✅ Replace with your actual InfinityFree MySQL username
+  password: 'leTn6aWTeQDtp',    // ✅ Replace with your actual InfinityFree MySQL password
+  database: 'if0_38244027_healthdatabase',        // ✅ Replace with your actual InfinityFree MySQL database name
+  port: 3306                       // ✅ Default MySQL port
 });
 
-db.connect((err) => {
-  if (err) 
-    throw err;
-  console.log('Connected to MySQL database');
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL');
 });
 
-module.exports = db;
+module.exports = connection;
